@@ -1,0 +1,31 @@
+@import "../styles/variables.scss";
+
+.table-wrapper {
+    box-sizing: border-box;
+    width: 100%;
+    flex-grow: 0.5;
+    border-radius: 0.25rem;
+    border: 1px solid $secondary-dark;
+    background-color: $light;
+    color: $secondary-dark;
+    overflow: auto;
+    margin: 0;
+    .table {
+        th {
+            border-bottom: 2px solid $secondary-dark;
+            padding: 2px 8px;
+            width: fit-content;
+            }
+
+            td {
+                text-align: center;
+                vertical-align: middle;
+                padding: 8px;
+            }
+            // tr {
+            //     border: 1px solid $secondary-dark;
+
+            // }
+
+    }
+}
