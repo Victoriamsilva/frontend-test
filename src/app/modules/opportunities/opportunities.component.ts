@@ -9,6 +9,9 @@ import { Opportunity } from 'src/types/opportunity';
 })
 export class OpportunitiesComponent implements OnInit {
   opportunities: Opportunity[] = [];
+  page = 0;
+  pageSize = 10;
+  count = 0;
 
   constructor(private opportunitiesService: OpportunitiesService) {}
 
@@ -16,8 +19,16 @@ export class OpportunitiesComponent implements OnInit {
     this.getOpportunities();
   }
 
-  async getOpportunities() {
-    const result = await this.opportunitiesService.getOpportunities(0, 10);
+  async getOpportunities(page: number = 0, limit: number = 5) {
+    const result = await this.opportunitiesService.getOpportunities(
+      page,
+      limit
+    );
     this.opportunities = result.opportunities;
+    this.count = result.count;
+  }
+
+  async onPageChange(event: any) {
+    await this.getOpportunities(event.pageIndex, event.pageSize);
   }
 }

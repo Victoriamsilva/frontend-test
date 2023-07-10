@@ -6,13 +6,17 @@
     align-items: center;
     padding: 0 30px;
     height: 80px;
-    background-color: $primary-dark;
+    background-color: $secondary-dark;
 
     .logo {
         align-items: center;
         display: flex;
         color: $white;
         width: 100%;
+        span {
+            font-size: 18px;
+            font-weight: 500;
+        }
         img {
             margin-right: 5px;
             height: 40px;

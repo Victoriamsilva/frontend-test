@@ -1,11 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
 @import "./table.scss";
 @import "./input.scss";
+@import "./button.scss";
 @import "./variables.scss";
+@import "./typography.scss";
 
 body {
     margin: 0;
     padding: 0;
-    // font-family: "Roboto", sans-serif;
-    background-color: $primary-light;
+    background-color: $secondary-light;
 }
+
+* {
+    scrollbar-width: 12px;
+    scrollbar-color: $secondary-dark $light;
+  }
+  
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: $light;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: $secondary-dark;
+    border: 3px solid $secondary-dark;
+  }
