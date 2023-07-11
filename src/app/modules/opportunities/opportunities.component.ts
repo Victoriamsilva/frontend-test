@@ -8,10 +8,12 @@ import { Opportunity } from 'src/types/opportunity';
   styleUrls: ['./opportunities.component.scss'],
 })
 export class OpportunitiesComponent implements OnInit {
-  opportunities: Opportunity[] = [];
+  opportunities: Opportunity[] | null = null;
   page = 0;
   pageSize = 10;
   count = 0;
+  isLoading = false;
+  searchText: string = '';
 
   constructor(private opportunitiesService: OpportunitiesService) {}
 
@@ -19,13 +21,11 @@ export class OpportunitiesComponent implements OnInit {
     this.getOpportunities();
   }
 
-  searchText: string = '';
-
-  public async getOpportunities(search?: string) {
+  async getOpportunities(search?: string) {
+    this.isLoading = true;
     if (search) {
       this.page = 0;
       this.searchText = search;
-      console.log(this.searchText);
     }
     try {
       const result = await this.opportunitiesService.getOpportunities({
@@ -35,7 +35,10 @@ export class OpportunitiesComponent implements OnInit {
       });
       this.opportunities = result.opportunities;
       this.count = result.count;
-    } catch (error) {}
+    } catch (error) {
+    } finally {
+      this.isLoading = false;
+    }
   }
 
   async onPageChange(event: any) {
