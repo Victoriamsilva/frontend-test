@@ -1,43 +1,46 @@
-<div *ngIf="opportunities.length > 0" class="table-wrapper">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Data de criação</th>
-        <th>Número do pedido</th>
-        <th>Titulo</th>
-        <th>Organização</th>
-        <th>Pessoa de contato</th>
-        <th>Email</th>
-        <th>Telefone</th>
-        <th>Valor</th>
-        <th>Quantidade de itens</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let opportunity of opportunities">
-        <td>{{ opportunity.date }}</td>
-        <td>{{ opportunity.orderId }}</td>
-        <td>{{ opportunity.title }}</td>
-        <td>{{ opportunity.organization.name }}</td>
-        <td>{{ opportunity.contact.name }}</td>
-        <td>{{ opportunity.contact.email }}</td>
-        <td>{{ opportunity.contact.phone }}</td>
-        <td>{{ opportunity.value }}</td>
-        <td>{{ opportunity.productsCount }}</td>
-        <td>
-          <button class="button">Ver produtos</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<app-header (searchEvent)="getOpportunities($event)"></app-header>
+<div class="wrapper-content">
+  <div *ngIf="opportunities.length > 0" class="table-wrapper">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Data de criação</th>
+          <th>Número do pedido</th>
+          <th>Titulo</th>
+          <th>Organização</th>
+          <th>Pessoa de contato</th>
+          <th>Email</th>
+          <th>Telefone</th>
+          <th>Valor</th>
+          <th>Quantidade de itens</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let opportunity of opportunities">
+          <td>{{ opportunity.date }}</td>
+          <td>{{ opportunity.orderId }}</td>
+          <td>{{ opportunity.title }}</td>
+          <td>{{ opportunity.organization.name }}</td>
+          <td>{{ opportunity.contact.name }}</td>
+          <td>{{ opportunity.contact.email }}</td>
+          <td>{{ opportunity.contact.phone }}</td>
+          <td>{{ opportunity.value }}</td>
+          <td>{{ opportunity.productsCount }}</td>
+          <td>
+            <button class="button">Ver produtos</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <mat-paginator
+    class="pagination"
+    [length]="count"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    (page)="onPageChange($event)"
+    (pageSize)="onPageChange($event)"
+  >
+  </mat-paginator>
 </div>
-<mat-paginator
-  class="pagination"
-  [length]="count"
-  [pageSize]="pageSize"
-  [pageSizeOptions]="[5, 10, 25, 100]"
-  (page)="onPageChange($event)"
-  (pageSize)="onPageChange($event)"
->
-</mat-paginator>

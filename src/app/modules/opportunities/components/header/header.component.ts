@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ElementRef, ViewChild } from '@angular/core';
 import { fromEvent } from 'rxjs';
 import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
@@ -13,13 +13,13 @@ import { OpportunitiesService } from 'src/app/services/opportunities.service';
 export class HeaderComponent implements OnInit {
   @ViewChild('input') input: ElementRef = new ElementRef('');
 
-  constructor(private opportunitiesService: OpportunitiesService) {}
+  constructor() {}
 
   ngOnInit(): void {}
+  searchValue: string = '';
 
-  opportunitiesComponent = new OpportunitiesComponent(
-    this.opportunitiesService
-  );
+  @Output()
+  searchEvent: EventEmitter<string> = new EventEmitter<string>();
 
   ngAfterViewInit() {
     fromEvent(this.input.nativeElement, 'keyup')
@@ -27,9 +27,7 @@ export class HeaderComponent implements OnInit {
         debounceTime(700),
         distinctUntilChanged(),
         tap(() => {
-          this.opportunitiesComponent.getOpportunities(
-            this.input.nativeElement.value
-          );
+          this.searchEvent.emit(this.input.nativeElement.value);
         })
       )
       .subscribe();

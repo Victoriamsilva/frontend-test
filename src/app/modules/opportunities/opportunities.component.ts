@@ -19,9 +19,13 @@ export class OpportunitiesComponent implements OnInit {
     this.getOpportunities();
   }
 
+  searchText: string = '';
+
   public async getOpportunities(search?: string) {
     if (search) {
       this.page = 0;
+      this.searchText = search;
+      console.log(this.searchText);
     }
     try {
       const result = await this.opportunitiesService.getOpportunities({
