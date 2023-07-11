@@ -4,7 +4,6 @@ export interface Opportunity {
   orderId: number;
   value: number;
   date: string;
-  productsCount: number;
   creator: {
     name: string;
     email: string;
@@ -12,13 +11,13 @@ export interface Opportunity {
   };
   contact: {
     name: string;
-    email: string;
-    phone: string;
+    email?: string;
+    phone?: string;
     _id: string;
   };
-  organization: {
+  organization?: {
     _id: string;
-    name: string;
+    name?: string;
   };
   products: {
     id: number;

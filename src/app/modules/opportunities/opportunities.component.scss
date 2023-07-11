@@ -1,16 +1,18 @@
 @import '../../../styles/variables.scss';
 
 :host {
-  display: flex;
-  min-height: 100vh;
-  height: 100%;
-  flex-direction: column;
-
-  h1 {
-    margin: 0 0 30px 0;
-    font-size: 30px;
-    color: $secondary-dark;
+  flex-grow: 1;
+  .header-table {
+    display: flex;
+    justify-content: space-between;
+    height: fit-content;
+    h1 {
+      margin: 0 0 30px 0;
+      font-size: 30px;
+      color: $secondary-dark;
+    }
   }
+
 
   .empty {
     display: flex;

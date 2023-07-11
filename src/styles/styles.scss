@@ -1,13 +1,16 @@
 @import "./table.scss";
 @import "./input.scss";
 @import "./button.scss";
+@import "./datePicker.scss";
 @import "./variables.scss";
 @import "./typography.scss";
+@import 'ngx-toastr/toastr';
 
 body {
     margin: 0;
     padding: 0;
     background-color: $secondary-light;
+    min-height: 100vh;
 }
 
 * {

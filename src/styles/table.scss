@@ -1,6 +1,6 @@
 @import "../styles/variables.scss";
 
-.table-wrapper {
+.dialog-table, .table-wrapper {
     box-sizing: border-box;
     width: 100%;
     border-radius: 5px 5px 0 0;
@@ -10,7 +10,6 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     overflow-x: auto;
     .table {
         border-collapse: collapse;
@@ -36,4 +35,13 @@
             padding: 2px 8px;
         }
     }
+}
+
+.dialog-table {
+    border-radius: 5px;
+}
+
+.table-wrapper {
+    border-radius: 5px 5px 0 0;
+   
 }

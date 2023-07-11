@@ -1,17 +1,31 @@
-.button {
-    background-color: $white;
-    border: 1px solid $secondary-dark;
-    border-radius: 5px;
-    color: $secondary-dark;
+.primary-button, .secondary-button  {
     cursor: pointer;
     font-weight: 400;
     padding: 6px 12px;
     text-align: center;
     line-height: 20px;
     white-space: nowrap;
+}
+
+.secondary-button {
+    background-color: $white;
+    border: 1px solid $secondary-dark;
+    border-radius: 5px;
+    color: $secondary-dark;
 
     &:hover {
         background-color: $secondary-dark;
         color: $white;
+    }
+}
+
+.primary-button  {
+    background-color: $secondary-dark;
+    border-radius: 5px;
+    color: $white;
+    border: none;
+
+    &:hover {
+        background-color: $dark;
     }
 }

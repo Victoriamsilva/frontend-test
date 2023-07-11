@@ -1,0 +1,7 @@
+@import '../../../../../styles/variables.scss';
+
+:host {
+    h1 {
+        color: $secondary-dark;
+    }
+}
