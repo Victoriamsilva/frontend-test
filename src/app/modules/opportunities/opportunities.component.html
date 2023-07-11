@@ -20,7 +20,6 @@
         <td>{{ opportunity.orderId }}</td>
         <td>{{ opportunity.title }}</td>
         <td>{{ opportunity.organization.name }}</td>
-
         <td>{{ opportunity.contact.name }}</td>
         <td>{{ opportunity.contact.email }}</td>
         <td>{{ opportunity.contact.phone }}</td>
@@ -39,5 +38,6 @@
   [pageSize]="pageSize"
   [pageSizeOptions]="[5, 10, 25, 100]"
   (page)="onPageChange($event)"
+  (pageSize)="onPageChange($event)"
 >
 </mat-paginator>

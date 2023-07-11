@@ -19,16 +19,24 @@ export class OpportunitiesComponent implements OnInit {
     this.getOpportunities();
   }
 
-  async getOpportunities(page: number = 0, limit: number = 5) {
-    const result = await this.opportunitiesService.getOpportunities(
-      page,
-      limit
-    );
-    this.opportunities = result.opportunities;
-    this.count = result.count;
+  public async getOpportunities(search?: string) {
+    if (search) {
+      this.page = 0;
+    }
+    try {
+      const result = await this.opportunitiesService.getOpportunities({
+        page: this.page,
+        limit: this.pageSize,
+        search,
+      });
+      this.opportunities = result.opportunities;
+      this.count = result.count;
+    } catch (error) {}
   }
 
   async onPageChange(event: any) {
-    await this.getOpportunities(event.pageIndex, event.pageSize);
+    this.page = event.pageIndex;
+    this.pageSize = event.pageSize;
+    await this.getOpportunities();
   }
 }
