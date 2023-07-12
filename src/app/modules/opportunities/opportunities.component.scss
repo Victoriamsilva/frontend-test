@@ -13,6 +13,20 @@
     }
   }
 
+  .info {
+    display: flex;
+    background-color: $light;
+    border: solid 2px $secondary-dark;
+    width: fit-content;
+    border-radius: 5px;
+    margin-bottom: 30px;
+
+    span {
+      padding: 8px;
+      color: $secondary-dark;
+    }
+  }
+
   .empty {
     display: flex;
     flex-grow: 1;

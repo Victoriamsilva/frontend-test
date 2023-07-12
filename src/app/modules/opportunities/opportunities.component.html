@@ -12,6 +12,10 @@
     />
   </div>
   <div *ngIf="!isLoading && opportunities?.length">
+    <div class="info">
+      <span>Quantidade de oportunidades: {{ count }}</span>
+      <span>Valor total: {{ totalValue }}</span>
+    </div>
     <div class="table-wrapper">
       <table class="table">
         <thead>

@@ -42,6 +42,14 @@ export class OpportunitiesComponent implements OnInit {
     });
   }
 
+  get totalValue() {
+    let total = 0;
+    this.opportunities?.forEach((opportunity) => {
+      total += opportunity.value;
+    });
+    return total;
+  }
+
   async getOpportunities(search?: string) {
     this.isLoading = true;
     if (search) {
