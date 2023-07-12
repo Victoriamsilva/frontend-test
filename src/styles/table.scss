@@ -13,6 +13,7 @@
     overflow-x: auto;
     .table {
         border-collapse: collapse;
+
         tbody {
             tr {
                 &:hover {
@@ -20,17 +21,21 @@
                 }
             }
         }
+
         th,
         td {
             min-width: 100px;
         }
+
         tr {
             border-bottom: 1px solid $secondary-dark;
         }
+
         td {
             padding: 8px;
             text-align: center;
         }
+        
         th {
             padding: 2px 8px;
         }

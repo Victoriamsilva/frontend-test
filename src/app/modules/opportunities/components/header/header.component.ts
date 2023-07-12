@@ -2,8 +2,6 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ElementRef, ViewChild } from '@angular/core';
 import { fromEvent } from 'rxjs';
 import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
-import { OpportunitiesComponent } from 'src/app/modules/opportunities/opportunities.component';
-import { OpportunitiesService } from 'src/app/services/opportunities.service';
 
 @Component({
   selector: 'app-header',

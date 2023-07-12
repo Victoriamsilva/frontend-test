@@ -6,20 +6,5 @@
     height: 50px;
     background-color: $secondary-dark;
     color: $white;
-    display: flex;
     box-sizing: border-box;
-    font-size: 14px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    div {
-        display: flex;
-        align-items: center;
-    }
-    img {
-        width: 20px;
-        height: 20px;
-        margin: 0 5px;
-    }
 }

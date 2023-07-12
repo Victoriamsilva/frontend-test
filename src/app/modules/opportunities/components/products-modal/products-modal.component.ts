@@ -13,7 +13,6 @@ export class ProductsModalComponent {
   ) {}
 
   onCancel(): void {
-    console.log(this.data);
     this.dialogRef.close();
   }
 }
