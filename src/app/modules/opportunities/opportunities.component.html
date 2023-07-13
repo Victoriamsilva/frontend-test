@@ -8,13 +8,13 @@
       name="date"
       id="date"
       [(ngModel)]="date"
-      (change)="getOpportunities()"
+      (change)="onDateChange()"
     />
   </div>
   <div *ngIf="!isLoading && opportunities?.length">
     <div class="info">
       <span>Quantidade de oportunidades: {{ count }}</span>
-      <span>Valor total: {{ totalValue }}</span>
+      <span>Valor total: {{ totalValue | currency : "BRL" : "symbol" }}</span>
     </div>
     <div class="table-wrapper">
       <table class="table">
@@ -41,7 +41,7 @@
             <td>{{ opportunity?.contact?.name }}</td>
             <td>{{ opportunity?.contact?.email }}</td>
             <td>{{ opportunity?.contact?.phone }}</td>
-            <td>{{ opportunity.value }}</td>
+            <td>{{ opportunity.value | currency : "BRL" : "symbol" }}</td>
             <td>{{ opportunity.products.length }}</td>
             <td>
               <button

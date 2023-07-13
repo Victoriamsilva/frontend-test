@@ -29,13 +29,25 @@ export class OpportunitiesService {
     date?: string;
   }): Promise<Response> {
     const params = {
-      page: page.toString(),
-      limit: limit.toString(),
+      page: page,
+      limit: limit,
       search: search || '',
       date: date || '',
     };
     return await lastValueFrom(
       this.http.get<Response>(`${this.baseUrl}/opportunities`, {
+        params,
+      })
+    );
+  }
+
+  async getTotal(search: string = '', date: string = ''): Promise<number> {
+    const params = {
+      search,
+      date,
+    };
+    return await lastValueFrom(
+      this.http.get<number>(`${this.baseUrl}/opportunities/total`, {
         params,
       })
     );

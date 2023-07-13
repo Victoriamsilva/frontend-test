@@ -12,13 +12,14 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./opportunities.component.scss'],
 })
 export class OpportunitiesComponent implements OnInit {
-  opportunities: Opportunity[] | null = null;
+  opportunities: Opportunity[] = [];
   page = 0;
   pageSize = 10;
   count = 0;
   isLoading = false;
   searchText: string = '';
   date = '';
+  totalValue = 0;
 
   constructor(
     private opportunitiesService: OpportunitiesService,
@@ -32,6 +33,7 @@ export class OpportunitiesComponent implements OnInit {
     this.paginator.nextPageLabel = 'Próxima página';
     this.paginator.previousPageLabel = 'Página anterior';
     this.getOpportunities();
+    this.getTotal();
   }
 
   openDialog(opportunity: Opportunity): void {
@@ -42,19 +44,12 @@ export class OpportunitiesComponent implements OnInit {
     });
   }
 
-  get totalValue() {
-    let total = 0;
-    this.opportunities?.forEach((opportunity) => {
-      total += opportunity.value;
-    });
-    return total;
-  }
-
   async getOpportunities(search?: string) {
     this.isLoading = true;
     if (search) {
       this.page = 0;
       this.searchText = search;
+      this.getTotal();
     } else {
       this.searchText = '';
     }
@@ -75,9 +70,26 @@ export class OpportunitiesComponent implements OnInit {
     }
   }
 
-  async onPageChange(event: any) {
+  onPageChange(event: any) {
     this.page = event.pageIndex;
     this.pageSize = event.pageSize;
-    await this.getOpportunities(this.searchText);
+    this.getOpportunities(this.searchText);
+  }
+
+  onDateChange() {
+    this.getOpportunities();
+    this.getTotal();
+  }
+
+  async getTotal() {
+    try {
+      const result = await this.opportunitiesService.getTotal(
+        this.searchText,
+        this.date
+      );
+      this.totalValue = result;
+    } catch (error) {
+      this.toastr.error('Erro ao buscar valor total das oportunidades');
+    }
   }
 }
