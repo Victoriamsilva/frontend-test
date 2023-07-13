@@ -15,3 +15,4 @@ Navegue para `http://localhost:4200/`.
 
 * [Angular](https://angular.io/) - O framework web usado
 * [Sass](https://sass-lang.com/) - Para estilização
+* [Angular Material](https://material.angular.io/) - Usado para paginação e modal
